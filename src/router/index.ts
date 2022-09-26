@@ -19,6 +19,10 @@ const router = createRouter({
       name: "call",
       component: () => import("../views/CallUs.vue"),
     },
+    {
+      path: "/:catchAll(.*)",
+      component: Home,
+    },
   ],
 });
 
