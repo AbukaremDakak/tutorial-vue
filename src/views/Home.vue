@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import ListCard from "../components/ListCard.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <ListCard />
   </main>
 </template>

@@ -68,6 +68,7 @@ ul.small li a.router-link-exact-active {
   justify-content: center;
   transform: translateX(-100%);
   transition: cubic-bezier(0.19, 1, 0.22, 1);
+  transition-duration: 1s;
 }
 
 ul.small {
@@ -145,12 +146,6 @@ ul.small li a:hover {
   transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }
 
-/* Bring menu from left */
-div.show-menu {
-  transform: translateX(0);
-  transition: cubic-bezier(0.19, 1, 0.22, 1);
-}
-
 /* Mobile menu */
 .side-menu {
   position: fixed;
@@ -164,6 +159,7 @@ div.show-menu {
   justify-content: center;
   transform: translateX(-100%);
   transition: cubic-bezier(0.19, 1, 0.22, 1);
+  transition-duration: 1s;
 }
 
 ul.small {
@@ -178,6 +174,13 @@ ul.small li {
 
 ul.small li a:hover {
   color: #bdc3c7;
+}
+
+/* Bring mobile menu from left */
+div.show-menu {
+  transform: translateX(0);
+  transition: cubic-bezier(0.19, 1, 0.22, 1);
+  transition-duration: 1s;
 }
 
 /* Overlay */
@@ -239,10 +242,4 @@ ul.small li a:hover {
 
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translateX(-6px);
-}
-
-/* Bring menu from left */
-div.show-menu {
-  transform: translateX(0);
-  transition: cubic-bezier(0.19, 1, 0.22, 1);
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { ref, type Ref } from "vue";
-import "@/assets/navbar.css";
+import "@/assets/styles/navbar.css";
 
 const toggel: Ref<boolean> = ref(false);
 </script>

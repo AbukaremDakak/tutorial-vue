@@ -20,6 +20,12 @@ const router = createRouter({
       component: () => import("../views/CallUs.vue"),
     },
     {
+      path: "/details/:id",
+      name: "details",
+      props: true,
+      component: () => import("@/views/Detailes.vue"),
+    },
+    {
       path: "/:catchAll(.*)",
       component: Home,
     },
