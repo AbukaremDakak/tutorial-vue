@@ -20,58 +20,66 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="event-card">
+  <div class="card">
     <div class="card-area">
       <h4 class="card-title">
         {{ props.title }}
       </h4>
-      <p><span class="span-title">Name:</span> {{ props.name }}</p>
-      <p>
-        <span class="span-title">Price:</span> {{ props.price?.toFixed(2) }}
+      <img
+        :src="'https://mixcart.com.tr/storage/' + props.image"
+        alt="picture"
+        style="width: 198px; height: 150px"
+      />
+      <p class="item-p" style="color: #ecf0f1">{{ props.name }}</p>
+      <p class="item-p">
+        السعر: {{ props.price?.toFixed(2) }}
         <span style="color: #2ecc71; font-size: 20px; font-weight: 700"
           >&#8378;</span
         >
       </p>
     </div>
-
-    <img
-      :src="'https://mixcart.com.tr/storage/' + props.image"
-      alt="picture"
-      style="width: 75px; height: 75px"
-    />
   </div>
 </template>
 
 <style scoped>
-.event-card {
+.card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   background-color: #2980b9;
   color: #ecf0f1;
-  padding: 7px;
-  width: 250px;
+  padding: 7px 0;
+  width: 200px;
+  height: 250px;
   cursor: pointer;
   border: 1px solid #39495c;
   border-radius: 5px;
 }
 
-.event-card:hover {
+.card:hover {
   transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 12px 0 #34495e02;
 }
 
 .card-area {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 .card-title {
   align-self: center;
   color: #34495e;
   font-size: 20px;
 }
-.span-title {
+.item-p {
   color: #f1c40f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  max-width: 200px;
+  direction: rtl;
+  text-align: start;
+  padding-right: 10px;
 }
 </style>

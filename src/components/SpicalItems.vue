@@ -2,16 +2,16 @@
 import Card from "@/components/Card.vue";
 import { RouterLink } from "vue-router";
 import type { carditem } from "@/assets/type";
-import _ from "lodash";
 import EventService from "@/service/EventService";
+import _ from "lodash";
 import { onBeforeMount, onBeforeUnmount, onMounted, ref, type Ref } from "vue";
 
 const items: Ref<Array<carditem>> = ref([]);
-const infinityEl: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
+const infinityElement: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(
+  null
+);
 const offcet: Ref<number> = ref(10);
 const limit: Ref<number> = ref(10);
-const scrolling: Ref<number> = ref(window.innerHeight);
-const widthW: Ref<number> = ref(window.innerWidth);
 
 onBeforeMount(async () => {
   try {
@@ -22,17 +22,19 @@ onBeforeMount(async () => {
   }
 });
 
-onMounted(() => window.addEventListener<"scroll">("scroll", handleScroll));
+onMounted(() => {
+  infinityElement.value?.addEventListener<"scroll">("scroll", handleScroll);
+});
 
 onBeforeUnmount(() =>
-  window.removeEventListener<"scroll">("scroll", handleScroll)
+  infinityElement.value?.removeEventListener<"scroll">("scroll", handleScroll)
 );
 
 const scroller = _.debounce(async () => {
-  if (infinityEl.value !== null) {
+  if (infinityElement.value !== null) {
     if (
-      infinityEl.value.getBoundingClientRect().bottom >
-      window.innerHeight + 200
+      infinityElement.value.scrollWidth >
+      infinityElement.value.scrollLeft + infinityElement.value.clientWidth + 200
     )
       return;
 
@@ -47,17 +49,22 @@ const scroller = _.debounce(async () => {
       console.log(error);
     }
   }
-}, 200);
+}, 300);
 const handleScroll = () => {
   scroller();
 };
 </script>
+
 <template>
-  <div id="card-home">
-    <div class="card-container">
-      <h3 class="list-title">قائمة المواد:</h3>
-      <ul class="list-card" ref="infinityEl">
-        <li id="infinite-list" v-for="(card, index) in items" :key="index">
+  <div id="card-container-spical">
+    <div class="card-container-spical">
+      <h3 class="list-title-spical">المواد المميزة:</h3>
+      <ul class="list-card-spical" ref="infinityElement">
+        <li
+          id="infinite-list-spical"
+          v-for="(card, index) in items"
+          :key="index"
+        >
           <RouterLink :to="{ name: 'details', params: { id: card.id } }">
             <Card
               :title="card.store.name"
@@ -73,28 +80,29 @@ const handleScroll = () => {
 </template>
 
 <style scoped>
-.card-container {
+.card-container-spical {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  width: 98vw;
 }
 
-.list-card {
+.list-card-spical {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  flex-flow: row nowrap;
+  justify-content: start;
+  overflow-x: scroll;
   padding-top: 10px;
   border-radius: 10px;
   box-shadow: #34495e07 0px 1px 1px, #34495e07 0px 2px 2px,
     #34495e07 0px 4px 4px, #34495e07 0px 8px 8px, #34495e07 0px 16px 16px;
   width: 220px;
+  height: 300px;
   margin-bottom: 10px;
   background-color: #bdc3c7;
 }
 
-.list-title {
+.list-title-spical {
   direction: rtl;
   font-size: 30px;
   font-weight: 700;
@@ -103,7 +111,7 @@ const handleScroll = () => {
   margin-right: 50px;
 }
 
-.list-card li {
-  margin-bottom: 10px;
+.list-card-spical li {
+  margin-left: 10px;
 }
 </style>
