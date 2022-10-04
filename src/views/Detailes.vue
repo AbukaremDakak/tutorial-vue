@@ -38,213 +38,80 @@ watch(
 </script>
 
 <template>
-  <div class="main-container" :key="id">
+  <div class="flex flex-col items-center mt-main" :key="id">
     <!-- Item Details -->
-    <div class="item-container">
-      <h4 class="item-title">{{ card?.name }}</h4>
+    <div
+      class="flex flex-col items-center rounded-lg p-2.5 m-2.5 bg-cblue w-11/12 sm:w-10/12 md:w-[600px] shadow-md"
+    >
+      <h4
+        class="w-full text-cblack mb-2.5 truncate text-xl font-medium text-right"
+      >
+        {{ card?.name }}
+      </h4>
       <img
         v-if="card?.images[0].image"
         :src="'https://mixcart.com.tr/storage/' + card?.images[0].image"
         alt="Item Picture"
-        class="item-image"
+        class="w-full object-cover"
       />
       <h1 v-else>No image has been</h1>
       <div>
-        <p class="item-summary">
+        <p class="w-full h-[150px] overflow-y-auto mt-2.5 p-1.5 text-cwhite">
           {{ card?.summary }}
         </p>
       </div>
       <div>
-        <p class="item-price">
-          السعر:{{ card?.price.toFixed(2) }}
-          <span style="color: #2ecc71; font-size: 20px; font-weight: 700"
-            >&#8378;</span
-          >
+        <p class="text-cyellow text-2xl font-medium">
+          السعر&nbsp;:&nbsp;{{ card?.price.toFixed(2) }}
+          <span class="text-cgreen font-bold">&#8378;</span>
         </p>
       </div>
-      <div class="item-state">
-        <div class="item-counter-container">
-          <button class="item-counter-btn up" @click="counter++">
-            &#8679;
-          </button>
-          <button class="item-counter-btn down" @click="counter--">
-            &#8681;
-          </button>
-        </div>
-        <h2 class="item-btn-title">{{ counter }}&nbsp</h2>
+      <div class="w-4/5 flex justify-end xs:justify-around py-1 items-center">
         <button
-          class="item-btn"
+          class="w-[175px] p-1 ml-auto xs:ml-0 text-cwhite border-none rounded text-xl"
           @click="addState = !addState"
-          :class="{
-            'item-btn-added': addState,
-            'item-btn-removed': !addState,
-          }"
+          :class="[addState ? 'bg-cgreen' : 'bg-cred']"
         >
           {{ btn }}
         </button>
+        <div class="flex">
+          <div class="flex flex-col justify-between h-9 ml-2.5">
+            <button
+              class="border-none w-2.5 h-3.5 bg-cwhite text-cblack rounded-t-md"
+              @click="counter++"
+            >
+              &#8679;
+            </button>
+            <button
+              class="border-none w-2.5 h-3.5 bg-cwhite text-cblack rounded-b-md"
+              @click="counter--"
+            >
+              &#8681;
+            </button>
+          </div>
+          <h2 class="text-cwhite ml-2.5 text-4xl">{{ counter }}&nbsp</h2>
+        </div>
       </div>
     </div>
 
     <!-- The Same Material -->
-    <div id="main-house">
-      <div class="card-container">
-        <h3 class="list-title">المواد المشابهة:</h3>
-        <ul class="list-card">
-          <li v-for="(item, index) in likeItems" :key="index">
-            <RouterLink :to="{ name: 'details', params: { id: item.id } }">
-              <Card
-                :image="item.images[0].image"
-                :name="item.name"
-                :price="item.price"
-              />
-            </RouterLink>
-          </li>
-        </ul>
-      </div>
+    <div class="flex flex-col items-center justify-center">
+      <h3 class="mt-2.5 text-cblack font-bold text-3xl mr-12">
+        المواد المشابهة:
+      </h3>
+      <ul
+        class="flex justify-around flex-wrap flex-row pt-2.5 rounded-xl bg-clightgray my-2.5 w-11/12 sm:w-10/12 shadow-md"
+      >
+        <li v-for="(item, index) in likeItems" :key="index" class="mb-2.5">
+          <RouterLink :to="{ name: 'details', params: { id: item.id } }">
+            <Card
+              :image="item.images[0].image"
+              :name="item.name"
+              :price="item.price"
+            />
+          </RouterLink>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
-
-<style scoped>
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Item Styles */
-.item-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: #34495e07 0px 1px 1px, #34495e07 0px 2px 2px,
-    #34495e07 0px 4px 4px, #34495e07 0px 8px 8px, #34495e07 0px 16px 16px;
-  padding: 10px;
-  margin: 10px;
-  background-color: #2980b9;
-}
-
-.item-title {
-  margin-bottom: 10px;
-  color: #34495e;
-  font-size: 20px;
-  direction: rtl;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 300px;
-}
-
-.item-image {
-  width: 298px;
-  height: 225px;
-  object-fit: cover;
-}
-.item-summary {
-  color: #ecf0f1;
-  overflow-y: auto;
-  width: 300px;
-  height: 75px;
-  direction: rtl;
-  text-align: start;
-  margin-top: 10px;
-  padding: 7px;
-}
-
-.item-price {
-  color: #f1c40f;
-  direction: rtl;
-  font-size: 25px;
-  font-weight: 500;
-}
-
-.item-state {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  width: 300px;
-  padding: 0 5px;
-}
-
-.item-btn {
-  margin-left: auto;
-  color: #ecf0f1;
-  padding: 5px;
-  width: 125px;
-  border: none;
-  border-radius: 5px;
-  font-size: 19px;
-}
-
-.item-btn-title {
-  margin-left: 10px;
-  color: #ecf0f1;
-}
-
-.item-counter-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 35px;
-}
-
-.item-counter-btn {
-  border: none;
-  width: 10px;
-  height: 15px;
-  background-color: #ecf0f1;
-  color: #34495e;
-}
-
-.up {
-  border-radius: 5px 5px 0 0;
-}
-
-.down {
-  border-radius: 0 0 5px 5px;
-}
-
-.item-btn-added {
-  background-color: #2ecc71;
-}
-
-.item-btn-removed {
-  background-color: #e74c3c;
-}
-
-/* Card Styles */
-.card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  width: 98vw;
-}
-
-.list-card {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  padding-top: 10px;
-  border-radius: 10px;
-  box-shadow: #34495e07 0px 1px 1px, #34495e07 0px 2px 2px,
-    #34495e07 0px 4px 4px, #34495e07 0px 8px 8px, #34495e07 0px 16px 16px;
-  width: 220px;
-  margin-bottom: 10px;
-  background-color: #bdc3c7;
-}
-
-.list-title {
-  direction: rtl;
-  font-size: 30px;
-  font-weight: 700;
-  color: #34495e;
-  margin-top: 10px;
-  margin-right: 50px;
-}
-
-.list-card li {
-  margin-bottom: 10px;
-}
-</style>

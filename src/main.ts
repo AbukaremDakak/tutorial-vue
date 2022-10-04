@@ -7,7 +7,7 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-import "./assets/styles/main.css";
+import "./assets/main.css";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";

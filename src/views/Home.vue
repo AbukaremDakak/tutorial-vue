@@ -4,7 +4,7 @@ import SpicalItems from "../components/SpicalItems.vue";
 </script>
 
 <template>
-  <main class="main-container">
+  <main class="mt-main">
     <SpicalItems />
     <ListCard />
   </main>

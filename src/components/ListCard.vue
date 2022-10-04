@@ -53,57 +53,27 @@ const handleScroll = () => {
 };
 </script>
 <template>
-  <div id="card-home">
-    <div class="card-container">
-      <h3 class="list-title">قائمة المواد:</h3>
-      <ul class="list-card" ref="infinityEl">
-        <li id="infinite-list" v-for="(card, index) in items" :key="index">
-          <RouterLink :to="{ name: 'details', params: { id: card.id } }">
-            <Card
-              :title="card.store.name"
-              :image="card.images[0].image"
-              :name="card.name"
-              :price="card.price"
-            />
-          </RouterLink>
-        </li>
-      </ul>
-    </div>
+  <div class="flex flex-col items-center justify-center">
+    <h3 class="mt-2.5 text-cblack font-bold text-3xl mr-12">قائمة المواد:</h3>
+    <ul
+      class="flex justify-around flex-wrap flex-row pt-2.5 rounded-xl bg-clightgray my-2.5 w-11/12 sm:w-10/12 shadow-md"
+      ref="infinityEl"
+    >
+      <li
+        id="infinite-list"
+        v-for="(card, index) in items"
+        :key="index"
+        class="mb-2.5"
+      >
+        <RouterLink :to="{ name: 'details', params: { id: card.id } }">
+          <Card
+            :title="card.store.name"
+            :image="card.images[0].image"
+            :name="card.name"
+            :price="card.price"
+          />
+        </RouterLink>
+      </li>
+    </ul>
   </div>
 </template>
-
-<style scoped>
-.card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  width: 98vw;
-}
-
-.list-card {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  padding-top: 10px;
-  border-radius: 10px;
-  box-shadow: #34495e07 0px 1px 1px, #34495e07 0px 2px 2px,
-    #34495e07 0px 4px 4px, #34495e07 0px 8px 8px, #34495e07 0px 16px 16px;
-  width: 220px;
-  margin-bottom: 10px;
-  background-color: #bdc3c7;
-}
-
-.list-title {
-  direction: rtl;
-  font-size: 30px;
-  font-weight: 700;
-  color: #34495e;
-  margin-top: 10px;
-  margin-right: 50px;
-}
-
-.list-card li {
-  margin-bottom: 10px;
-}
-</style>

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #95a5a6;
+}
+
+ul li a.router-link-exact-active {
+  color: #bdc3c7;
+}
