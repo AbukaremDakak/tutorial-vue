@@ -1,8 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Definition from "../components/Definition.vue";
+</script>
 <template>
   <main class="mt-main">
-    <div class="h-screen flex items-center">
-      <h1>This is an about page</h1>
-    </div>
+    <Definition />
   </main>
 </template>

@@ -14,21 +14,21 @@ const toggel: Ref<boolean> = ref(false);
   ></div>
   <button
     id="menu-btn"
-    class="xs:hidden fixed z-10 top-6 left-4 cursor-pointer w-5 h-5"
+    class="group xs:hidden fixed z-10 top-6 left-4 cursor-pointer w-5 h-5"
     :class="[toggel && 'rotate-90 duration-500']"
     type="button"
     @click="toggel = !toggel"
   >
     <span
-      class="absolute top-0 left-0 w-5 h-0.5 bg-cwhite duration-500"
+      class="absolute top-0 left-0 w-5 h-0.5 bg-cwhite duration-500 group-hover:bg-clightgray"
       :class="[toggel && 'rotate-45 translate-y-[6px] translate-x-[-6px]']"
     ></span>
     <span
-      class="absolute top-[5px] left-0 w-5 h-0.5 bg-cwhite duration-500"
+      class="absolute top-[5px] left-0 w-5 h-0.5 bg-cwhite duration-500 group-hover:bg-clightgray"
       :class="[toggel && 'hidden']"
     ></span>
     <span
-      class="absolute top-2.5 left-0 w-5 h-0.5 bg-cwhite duration-500"
+      class="absolute top-2.5 left-0 w-5 h-0.5 bg-cwhite duration-500 group-hover:bg-clightgray"
       :class="[toggel && '-rotate-45 translate-y-[-6px] translate-x-[-6px]']"
     ></span>
   </button>
@@ -40,15 +40,27 @@ const toggel: Ref<boolean> = ref(false);
   >
     <ul class="text-xl text-cwhite mt-12">
       <li class="mt-4">
-        <RouterLink class="hover:text-clightgray" to="/">الرئيسية </RouterLink>
+        <RouterLink
+          @click="toggel = !toggel"
+          class="hover:text-clightgray duration-500"
+          to="/"
+          >الرئيسية
+        </RouterLink>
       </li>
       <li class="mt-4">
-        <RouterLink class="hover:text-clightgray" to="/about"
+        <RouterLink
+          @click="toggel = !toggel"
+          class="hover:text-clightgray duration-500"
+          to="/about"
           >من نحن</RouterLink
         >
       </li>
       <li class="mt-4">
-        <RouterLink class="hover:text-clightgray" to="/call">
+        <RouterLink
+          @click="toggel = !toggel"
+          class="hover:text-clightgray duration-500"
+          to="/call"
+        >
           اتصل بنا</RouterLink
         >
       </li>
@@ -63,7 +75,7 @@ const toggel: Ref<boolean> = ref(false);
       <a
         ><font-awesome-icon
           icon="fa-solid fa-cart-shopping"
-          class="text-cwhite hover:cursor-pointer hover:text-clightgray"
+          class="text-cwhite duration-500 hover:cursor-pointer hover:text-clightgray"
       /></a>
     </div>
 

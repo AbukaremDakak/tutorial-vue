@@ -23,6 +23,7 @@ module.exports = {
         cyellow: "#f1c40f",
         cgreen: "#2ecc71",
         cred: "#e74c3c",
+        cpurple: "#8e44ad",
         copacity: "#00000088",
       },
     },
