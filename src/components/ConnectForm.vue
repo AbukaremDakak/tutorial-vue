@@ -12,7 +12,7 @@ function formSubmit(e: any) {
       <label class="block mb-2.5 text-cblack text-lg font-medium" for="userName"
         >اسم المرسل:</label
       >
-      <input class="bg-cwhite px-1" id="userName" type="text" />
+      <input class="bg-cwhite px-1 rounded" id="userName" type="text" />
     </div>
     <div>
       <label
@@ -20,14 +20,14 @@ function formSubmit(e: any) {
         for="userEmail"
         >البريد:</label
       >
-      <input class="bg-cwhite px-1" id="userEmail" type="email" />
+      <input class="bg-cwhite px-1 rounded" id="userEmail" type="email" />
     </div>
     <div>
       <label class="block my-2.5 text-cblack text-lg font-medium" for="message"
         >الرسالة:</label
       >
       <textarea
-        class="form-control bg-cwhite px-1 resize-none w-full h-40 px-3 py-1.5 bg-cwhite rounded"
+        class="form-control bg-cwhite px-1 resize-none w-full h-40 px-3 py-1.5 rounded"
         id="message"
         type="text"
       ></textarea>
