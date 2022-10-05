@@ -82,7 +82,7 @@ const toggel: Ref<boolean> = ref(false);
     <ul id="linked" class="text-xl hidden xs:flex text-cwhite">
       <li class="mr-5 relative pb-0.5">
         <RouterLink
-          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
+          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] after:duration-500 hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
           to="/"
           >الرئيسية</RouterLink
         >
@@ -90,14 +90,14 @@ const toggel: Ref<boolean> = ref(false);
       <li class="mr-5 relative pb-0.5">
         <RouterLink
           to="/about"
-          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
+          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] after:duration-500 hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
           >من نحن</RouterLink
         >
       </li>
       <li class="mr-5 relative pb-0.5">
         <RouterLink
           to="/call"
-          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
+          class="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:bg-cwhite after:h-px after:scale-x-0 after:transition-transform after:origin-[right_center] after:duration-500 hover:after:scale-x-100 hover:after:duration-500 hover:after:origin-[left_center]"
         >
           اتصل بنا</RouterLink
         >
