@@ -24,13 +24,13 @@ const props = defineProps({
     class="flex flex-col bg-cblue text-cwhite py-2 w-[200px] h-[250] border-[1px] border-solid border-cblack cursor-pointer rounded hover:scale-105 hover:shadow-md"
   >
     <div class="h-full flex flex-col justify-between">
-      <h4 class="self-center text-cblack text-xl mb-2">
+      <h4 class="self-center text-cdarkblack text-xl mb-2">
         {{ props.title }}
       </h4>
       <img
         :src="'https://mixcart.com.tr/storage/' + props.image"
         alt="picture"
-        class="w-[198px] h-[150px]"
+        class="w-full aspect-[4/3] object-cover"
       />
       <p class="text-cwhite truncate w-[200px] pr-2">
         {{ props.name }}

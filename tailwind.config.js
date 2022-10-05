@@ -17,6 +17,7 @@ module.exports = {
       colors: {
         cblue: "#2980b9",
         cblack: "#34495e",
+        cdarkblack: "#2c3e50",
         cwhite: "#ecf0f1",
         clightgray: "#bdc3c7",
         cdarkgray: "#95a5a6",

@@ -70,7 +70,7 @@ function backBtn() {
       class="flex flex-col items-center rounded-lg p-2.5 m-2.5 bg-cblue w-11/12 sm:w-10/12 md:w-[600px] shadow-md"
     >
       <h4
-        class="w-full text-cblack mb-2.5 truncate text-xl font-medium text-right"
+        class="w-full text-cdarkblack mb-2.5 truncate text-xl font-medium text-right"
       >
         {{ card?.name }}
       </h4>
@@ -88,7 +88,7 @@ function backBtn() {
             'https://mixcart.com.tr/storage/' + card?.images[imgIndex].image
           "
           alt="Item Picture"
-          class="w-full object-cover"
+          class="w-full aspect-[4/3] object-cover"
         />
         <h1 v-else>No image has been</h1>
         <button

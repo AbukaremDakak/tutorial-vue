@@ -72,11 +72,10 @@ const toggel: Ref<boolean> = ref(false);
     class="flex items-center px-7 fixed z-[3] w-full h-16 top-0 left-0 bg-cblack"
   >
     <div class="mr-5 relative pb-0.5">
-      <a
-        ><font-awesome-icon
-          icon="fa-solid fa-cart-shopping"
-          class="text-cwhite duration-500 hover:cursor-pointer hover:text-clightgray"
-      /></a>
+      <font-awesome-icon
+        icon="fa-solid fa-cart-shopping"
+        class="text-cwhite duration-500 hover:cursor-pointer hover:text-clightgray"
+      />
     </div>
 
     <ul id="linked" class="text-xl hidden xs:flex text-cwhite">
