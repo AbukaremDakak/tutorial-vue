@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, type Ref } from "vue";
+import { computed } from "@vue/reactivity";
+import { ref, type ComputedRef, type Ref } from "vue";
 
 const props = defineProps({
   title: {
@@ -20,8 +21,11 @@ const props = defineProps({
   },
 });
 const imgLoading: Ref<boolean> = ref(false);
+const imgPath: ComputedRef<string> = computed(() =>
+  props.image.replace(".", ".thumb.small.")
+);
 
-function loadingImg() {
+function loadingImg(): void {
   imgLoading.value = true;
 }
 </script>
@@ -31,7 +35,7 @@ function loadingImg() {
     class="flex flex-col bg-cblue text-cwhite py-2 w-[200px] h-[250] border-[1px] border-solid border-cblack cursor-pointer rounded hover:scale-105 hover:shadow-md"
   >
     <div class="h-full flex flex-col justify-between">
-      <h4 class="self-center text-cdarkblack text-xl mb-2">
+      <h4 class="self-center text-cyellow text-xl mb-2">
         {{ props.title }}
       </h4>
       <div
@@ -43,7 +47,7 @@ function loadingImg() {
         ></div>
       </div>
       <img
-        :src="'https://mixcart.com.tr/storage/' + props.image"
+        :src="'https://mixcart.com.tr/storage/' + imgPath"
         alt="picture"
         class="w-full aspect-[4/3] object-cover"
         :class="[imgLoading ? 'block' : 'hidden']"
