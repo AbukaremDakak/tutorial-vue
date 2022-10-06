@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, type Ref } from "vue";
+
 const props = defineProps({
   title: {
     type: String,
@@ -17,6 +19,11 @@ const props = defineProps({
     required: true,
   },
 });
+const imgLoading: Ref<boolean> = ref(false);
+
+function loadingImg() {
+  imgLoading.value = true;
+}
 </script>
 
 <template>
@@ -27,10 +34,20 @@ const props = defineProps({
       <h4 class="self-center text-cdarkblack text-xl mb-2">
         {{ props.title }}
       </h4>
+      <div
+        class="relative w-[198px] h-[148.5px]"
+        :class="[imgLoading ? 'hidden' : 'block']"
+      >
+        <div
+          class="absolute top-1/2 left-1/2 -mt-8 -ml-8 border-[8px] border-solid border-cblack rounded-full border-t-[8px] border-t-solid border-t-clightgray w-16 h-16 animate-spin-slow"
+        ></div>
+      </div>
       <img
         :src="'https://mixcart.com.tr/storage/' + props.image"
         alt="picture"
         class="w-full aspect-[4/3] object-cover"
+        :class="[imgLoading ? 'block' : 'hidden']"
+        @load="loadingImg"
       />
       <p class="text-cwhite truncate w-[200px] pr-2">
         {{ props.name }}

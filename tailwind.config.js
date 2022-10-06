@@ -27,7 +27,11 @@ module.exports = {
         cpurple: "#8e44ad",
         copacity: "#00000088",
       },
+      animation: {
+        "spin-slow": "spin 2s linear infinite",
+      },
     },
   },
+
   plugins: [],
 };
